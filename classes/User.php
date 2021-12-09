@@ -2,9 +2,13 @@
 require_once __DIR__ . "/./PersonalData.php";
 require_once __DIR__ . "/./PaymentMethod.php";
 require_once __DIR__ . "/./StoreData.php";
+require_once __DIR__ . "/../exceptions/ProductException.php";
+require_once __DIR__ . "/../exceptions/EmailException.php";
 
-class User extends PersonalData
+
+class User
 {
+    use PersonalData;
     protected $username;
     protected $email;
     protected $registrationDate;
@@ -28,6 +32,9 @@ class User extends PersonalData
     }
     public function setEmail($_email): User
     {
+        if (!filter_var($_email, FILTER_VALIDATE_EMAIL)) {
+            throw new EmailException("Email Not Valid");
+        }
         $this->email = $_email;
         return $this;
     }
@@ -66,5 +73,6 @@ class User extends PersonalData
                 return;
             }
         }
+        throw new ProductException();
     }
 }

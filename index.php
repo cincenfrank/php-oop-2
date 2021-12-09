@@ -25,3 +25,23 @@ var_dump(StoreData::$productsList);
 echo "<h2>Step 5: USER ADDS PRODUCT 2 TO CART</h2>";
 $newUser->addProductToCart("125");
 var_dump($newUser);
+
+echo "<h2>Step 6: TEST THROWS PRODUCT-EXCEPTION WHEN ADD TO CART A WRONG PRODUCT ID</h2>";
+try {
+    $newUser->addProductToCart("random-id");
+    echo "NO ERROR THROWN";
+} catch (Exception $e) {
+    echo "AN ERROR WAS THROWN!<br>";
+    echo $e->getMessage();
+}
+
+echo "<h2>Step 7: TEST THROWS EMAIL-EXCEPTION WHEN USER CREATED WITH WRONG EMAIL ID</h2>";
+try {
+    $newUser = new User("userNick", "peppino_sparalesto");
+    var_dump($newUser);
+    echo "NO ERROR THROWN";
+} catch (Exception $e) {
+    echo "AN ERROR WAS THROWN!<br>";
+    echo $e->getMessage();
+}
+// var_dump($newUser);

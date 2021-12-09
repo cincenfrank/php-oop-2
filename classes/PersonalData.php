@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . "/./Address.php";
 
-class PersonalData
+trait PersonalData
 {
     protected string $firstName;
     protected string $lastName;
