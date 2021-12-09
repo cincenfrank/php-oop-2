@@ -1,5 +1,5 @@
 <?php
-require_once "./Address.php";
+require_once __DIR__ . "/./Address.php";
 
 class PersonalData
 {
@@ -9,8 +9,26 @@ class PersonalData
     protected Address $address;
 
 
-    public function hhhh()
+    // function __construct($_firstName, $_lastName, $_phoneNumber, $_address, $_country, $_city)
+    // {
+    //     $this->setFirstName($_firstName)->setLastName($_lastName)->setPhoneNumber($_phoneNumber);
+    // }
+
+    public function setFirstName($_name)
     {
-        $this->address = "ciao";
+        $this->firstName = $_name;
+        return $this;
+    }
+
+    public function setLastName($_lastName)
+    {
+        $this->lastName = $_lastName;
+        return $this;
+    }
+
+    public function setPhoneNumber($number)
+    {
+        $this->phoneNumber = $number;
+        return $this;
     }
 }
